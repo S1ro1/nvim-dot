@@ -11,11 +11,14 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
   end,
 })
 
+vim.api.nvim_create_augroup("tabw", { clear = true})
+vim.api.nvim_create_autocmd({"FileType"}, {
+  desc = "Setup tab width",
+  group = "tabw",
+  pattern = {"*.py", "*.rs"},
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+  end,
+})
 
-vim.cmd [[
-  augroup MyAutoCmds
-    autocmd!
-    autocmd FileType python setlocal tabstop=4 shiftwidth=4
-    autocmd FileType rust setlocal tabstop=4 shiftwidth=4
-  augroup END
-]]
