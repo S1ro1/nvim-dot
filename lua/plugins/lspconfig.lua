@@ -1,12 +1,27 @@
 local lsp = {
   "lua_ls",
-  "pyright",
+  "ruff_lsp",
   "tsserver",
   "volar"
 }
 
 
 return {
+  {'neovim/nvim-lspconfig'},
+  {'hrsh7th/cmp-nvim-lsp'},
+  {'hrsh7th/nvim-cmp'},
+  {'L3MON4D3/LuaSnip'},
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    config = function()
+      local lsp_zero = require("lsp-zero")
+      lsp_zero.extend_lspconfig()
+      lsp_zero.on_attach(function(client, bufnr)
+        lsp_zero.default_keymaps({buffer = bufnr})
+      end)
+    end
+  },
   -- mason
   {
     "williamboman/mason.nvim",
@@ -18,19 +33,14 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
+      local lsp_zero = require('lsp-zero')
       require("mason-lspconfig").setup({
         ensure_installed = lsp,
+        handlers = {
+          lsp_zero.default_setup,
+        }
       })
     end
   },
-  -- nvim/lspconfig
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      local lspconfig = require("lspconfig")
-      for _, l in ipairs(lsp) do
-        lspconfig[l].setup({})
-      end
-    end
-  }
+  -- autocompletion
 }

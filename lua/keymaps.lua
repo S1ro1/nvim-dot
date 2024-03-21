@@ -8,7 +8,7 @@ vim.keymap.set('n', '<Char-0xAC>', ':Telescope buffers<CR>', default_opts) -- b
 vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>', default_opts)
 
 --NEOTREE
-vim.keymap.set('n', '<Char-0xAD>', ':Neotree toggle<CR>', default_opts)
+vim.keymap.set('n', '<C-e>', ':Neotree toggle<CR>', default_opts) -- this is remapped inside alacritty and tmux
 
 -- LSP
 vim.keymap.set('n', '<Char-0xAE>', vim.lsp.buf.hover, default_opts)
