@@ -8,7 +8,7 @@ vim.keymap.set('n', '<C-b>', ':Telescope buffers<CR>', default_opts)    -- b
 vim.keymap.set('n', '<leader>h', ':Telescope help_tags<CR>', default_opts)
 
 --NEOTREE
-vim.keymap.set('n', '<C-e>', ':Neotree toggle<CR>', default_opts) -- this is remapped inside alacritty and tmux
+vim.keymap.set('n', '<C-e>', ':Neotree toggle<CR>', default_opts) -- this is remapped inside alaCRitty and tmux
 
 -- LSP
 vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, default_opts)
@@ -27,3 +27,6 @@ vim.keymap.set('n', '<leader>6', '<Cmd>BufferGoto 7<CR>', default_opts)
 vim.keymap.set('n', '<leader>7', '<Cmd>BufferGoto 8<CR>', default_opts)
 vim.keymap.set('n', '<leader>8', '<Cmd>BufferGoto 9<CR>', default_opts)
 vim.keymap.set('n', '<leader>w', '<Cmd>BufferClose<CR>', default_opts)
+
+vim.keymap.set('v', '<leader>gc', ":'<,'>Commentary<CR>", default_opts)
+vim.keymap.set('n', '<leader>gc', '<Cmd>Commentary<CR>', default_opts)
