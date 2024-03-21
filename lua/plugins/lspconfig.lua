@@ -9,7 +9,19 @@ local lsp = {
 return {
   {'neovim/nvim-lspconfig'},
   {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
+  {
+    'hrsh7th/nvim-cmp',
+    config = function()
+      local cmp = require('cmp')
+      cmp.setup({
+        mapping = cmp.mapping.preset.insert({
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+        }),
+      })
+    end
+  },
   {'L3MON4D3/LuaSnip'},
   {
     'VonHeikemen/lsp-zero.nvim',
